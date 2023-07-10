@@ -1,0 +1,25 @@
+\documentclass[]{article}
+
+\usepackage{coffee}
+
+\begin{document}
+    \input{src/content}%
+    \pagestyle{empty}
+    \fontmain%
+    \fontsize{8}{10}\selectfont%
+
+    \Title{}%
+    \vskip-2\baselineskip%
+    \begin{figure}[H]
+        \centering
+        \foreach \coffee [count=\coffeeid] in \recipes {
+            \begin{subfigure}[t]{\recipewidth}%
+                \vskip 0pt%
+                \coffee
+            \end{subfigure}%
+            \ifthenelse{%
+                \equal{\intcalcMod{\coffeeid}{4}}{0}%
+            }{\par\medskip}{\hfill}%
+        }
+    \end{figure}%
+\end{document}

@@ -1,0 +1,70 @@
+\tikzstyle{recipe} = [inner sep=0pt, outer sep=0pt, rounded corners]
+\tikzstyle{recipe inner} = [recipe, clip]
+\tikzstyle{recipe wrapper} = [recipe, fill=none, line width=.75pt]
+
+\pgfkeys{
+	/coffee/Composition/.is family,
+	/coffee/Composition/.cd,
+	id/.store in=\coffee@Composition@id,
+	id/.default={coffee-recipe-id}, id,
+	name/.store in=\coffee@Composition@name,
+	name/.default={coffee-recipe-name}, name,
+	parts/.store in=\coffee@Composition@parts,
+    parts/.default={},
+	parts/.initial={},
+	ingredients/.store in=\coffee@Composition@ingredients,
+    ingredients/.default={},
+	ingredients/.initial={},
+	extras/.store in=\coffee@Composition@extras,
+	extras/.default={}, extras,
+}
+
+\newcommand{\Composition}[1][]{%
+	\tikzset{/coffee/Composition/.cd,#1}%
+    \resizebox{\recipewidth}{!}{%
+        \begin{tikzpicture}[remember picture]%
+            \let\coffeedata\coffee@Composition@parts
+            \node[recipe inner, anchor=north west] (\coffee@Composition@id-parts) {%
+                \parbox{\recipewidth}{%
+                    \fontsize{10}{0}\selectfont%
+                    \setlength{\parskip}{0pt}%
+                    \foreach \coffeeclr / \coffeeperc in \coffeedata {%
+                        \tikz\node[sharp corners]{%
+                            \color{\coffeeclr}\rule{\recipewidth}{\coffeeperc\recipewidth}%
+                        };\\[-3pt]%
+                    }%
+                }%
+            };
+        %
+            \node[recipe wrapper, fit=(\coffee@Composition@id-parts), draw=none] (recipe) {};
+        %
+            \node[%
+                inner sep=0pt,
+                fill=none,
+                anchor=north west,
+                text width=\recipewidth,
+            ] at ([yshift=-2mm]\coffee@Composition@id-parts.south west) {%
+                \fontmain%    
+                {%
+                    \begingroup%
+                        \vskip-\baselineskip%
+                        \large\phantom{blg}%
+                    \endgroup%
+
+                    \fontsize{7.5}{0}\selectfont%
+                    \bfseries\color{clr-coffee-brew}%
+                    \MakeUppercase{\coffee@Composition@name}%
+                } \\[2mm]%
+                \parbox{\recipewidth}{%
+                    \oxfordlist{\coffee@Composition@ingredients} \\[2mm]%
+                }%
+                % \foreach \ingredient in \coffee@Composition@ingredients {%
+                %     \scriptsize\color{clr-coffee-brew}\ingredient\\%
+                % }%
+            };
+        %
+            \node[] at (recipe.center) {\coffee@Composition@extras};
+        \end{tikzpicture}%
+    }
+    \vskip5mm%
+}

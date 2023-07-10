@@ -1,0 +1,25 @@
+\newcommand\exampledata{%
+    \begin{figure}[b]
+        \centering
+        \foreach \r in {1, ..., 8} {
+            \begin{subfigure}{\recipewidth}%
+                \Composition[%
+                    id={cafe-au-lait},
+                    name={Caf\'e au lait},
+                    parts={%
+                        {clr-coffee-crema/0.05},
+                        {clr-coffee-steamed-milk/0.475},
+                        {clr-coffee-brew/0.475}%
+                    },
+                    ingredients={%
+                        {180ml brewed coffee},
+                        {180ml scolded milk}%
+                    },
+                ]%
+            \end{subfigure}%
+            \ifthenelse{%
+                \equal{\intcalcMod{\r}{4}}{0}%
+            }{}{\hfill}%
+        }
+    \end{figure}%
+}%

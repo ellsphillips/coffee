@@ -1,0 +1,52 @@
+% \newcommand*{\elementsep}{}%
+% \newcommand*{\lastelement}{}%
+% \newcommand*{\prelastelement}{}%
+
+% \newcommand*{\dooxfordlist}[1]{%
+%   \elementsep
+%   \lastelement
+%   \renewcommand{\lastelement}{%
+%     \renewcommand{\elementsep}{,\par}%
+%     \renewcommand{\prelastelement}{, and\par}%
+%     \scriptsize\color{clr-coffee-brew}%
+%     #1%
+%   }}%
+
+% \newcommand*{\oxfordlist}[1]{%
+%   \renewcommand*{\elementsep}{}%
+%   \renewcommand*{\lastelement}{}%
+%   \renewcommand*{\prelastelement}{}%
+%   \forcsvlist{\dooxfordlist}{#1}%
+%   \prelastelement \lastelement
+% }
+
+
+% set up defaults so we don't get an error
+% when we try to redefine these commands
+\newcommand*{\elementsep}{}%
+\newcommand*{\lastelement}{}%
+\newcommand*{\prelastelement}{}%
+
+% define the handler macro:
+\newcommand*{\dooxfordlist}[1]{%
+  \elementsep
+  \lastelement
+  \renewcommand{\lastelement}{%
+    \renewcommand{\elementsep}{, }%
+    \renewcommand{\prelastelement}{, and }%
+    \raggedright%
+    \scriptsize\color{clr-coffee-brew}%
+    #1%
+  }}%
+
+% define the new command to process a list of elements:
+\newcommand*{\oxfordlist}[1]{%
+  % initialise:
+  \renewcommand*{\elementsep}{}%
+  \renewcommand*{\lastelement}{}%
+  \renewcommand*{\prelastelement}{}%
+  % Iterate through list
+  \forcsvlist{\dooxfordlist}{#1}%
+  % Finish off:
+  \prelastelement \lastelement
+}

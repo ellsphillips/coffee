@@ -1,0 +1,85 @@
+\usepackage[utf8]{inputenc}
+\usepackage[
+	left=2cm,
+	right=2cm,
+	top=3cm,
+	bottom=0cm,
+	% showframe,
+]{geometry}
+\usepackage[english]{babel}
+\usepackage{marvosym}
+\usepackage{ragged2e}
+\usepackage[font=scriptsize, justification=justified]{caption}
+\usepackage{lipsum}
+\usepackage{nicefrac}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+
+\RequirePackage{float}
+\RequirePackage{environ}
+
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{array}
+\usepackage{varwidth}
+\usepackage{epstopdf}
+\usepackage{fontspec}
+% \usepackage{fontawesome}
+
+\usepackage{ifthen}
+\usepackage{forloop}
+\usepackage{fmtcount}
+\usepackage{intcalc}
+
+\usepackage{tikz}
+\usetikzlibrary{
+	calc,
+	positioning,
+	shadows.blur,
+	shadows,
+	fadings,
+	patterns,
+	patterns.meta,
+	decorations.pathreplacing,
+	shapes.arrows,
+	decorations.pathmorphing,
+	decorations.markings,
+	calendar,
+	shapes,
+	backgrounds,
+	fit
+}
+
+
+\makeatletter
+\usepackage{lib/colour}
+\usepackage{lib/data}
+\usepackage{lib/dim}
+\usepackage{lib/extras}
+\usepackage{lib/shape}
+\usepackage{lib/oxford}
+\usepackage{lib/components/Composition}
+\usepackage{lib/components/Title}
+\makeatother
+
+
+\setlength\parindent{0pt}
+\fontsize{20}{24}\selectfont
+
+
+\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+\fontdir
+
+\newfontfamily\fontmain[
+	Path=\@fontdir,
+	UprightFont=*-regular,
+	ItalicFont=*-regularitalic,
+	BoldFont=*-black,
+	BoldItalicFont=*-bolditalic,
+	Scale=1,
+]{Averta}

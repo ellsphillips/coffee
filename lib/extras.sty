@@ -1,0 +1,81 @@
+\newcommand\cocoapowder{%
+    \tikz[overlay]\draw[%
+        clr-coffee-chocolate,
+        dotted,
+        line width=2pt,
+        line cap=round,
+        dash pattern=on 0pt off 2\pgflinewidth,
+        shift={(-\recipewidth/2,0.5\recipewidth-2mm)},
+    ] (1mm,0) -- (\recipewidth-1mm,0);
+}
+
+
+
+\newcommand\icecubes{%
+    \def\cube{%
+        \tikz{%
+            \fill[clr-coffee-brew!90!white, rounded corners]%
+                (0, 0)%
+                rectangle%
+                (\recipewidth/3, \recipewidth/3);%
+        }%
+    }%
+%
+    \tikz[overlay]{%
+        \node{\tikz{%
+            \node[rotate=-15] (cube-left) {\cube{}};
+            \node[rotate=10, above right=-1cm and -0mm of cube-left] {\cube{}};
+        }}%
+    }%
+}
+
+\newcommand\icecream{%
+    \tikz[overlay]\draw[%
+        draw=none,
+        fill=clr-coffee-cream,
+        rounded corners,
+        shift={(-\recipewidth/2,\recipewidth/4-4mm)},
+    ] (2mm,0) rectangle (\recipewidth-2mm,\recipewidth/4);
+}
+
+\newcommand\coffeedot{%
+    \tikz[overlay]{%
+        \node[%
+            anchor=north,
+            shift={(0,\recipewidth/2-0mm)},
+        ]{\tikz{%
+            \draw[%
+                draw=none,
+                fill=clr-coffee-espresso,
+                rounded corners,
+                scale=0.33,
+            ] (0,0) -- ++(1.5,0) -- ++(0,-1) -- ++(-1.5,0) --cycle;
+        }};
+    }%
+}
+
+\newcommand\coffeebeans{%
+    \def\bean{%
+        \tikz{%
+            \draw[%
+                draw=none,
+                fill=clr-coffee-espresso,
+                rounded corners=.5mm,
+                rotate=180,
+                scale=0.1,
+            ] (0,0) -- ++(1.5,0) arc(0:180:1.5) --cycle;
+        }
+    }
+
+    \tikz[overlay]{%
+        \node[%
+            anchor=north,
+            shift={(0,\recipewidth/2-0mm)},
+        ]{%
+            \foreach \x in {0,...,2} {%
+                \bean{}%
+                \hspace{1mm}%
+            }%
+        };
+    }%
+}

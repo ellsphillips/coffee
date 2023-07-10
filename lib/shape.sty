@@ -1,0 +1,19 @@
+\newcommand\cocktailglass{%
+    \tikz[overlay]{%
+        \node[shift={(-.5mm,0)}]{%
+            \tikz{%
+                \draw[%
+                    draw=white, ultra thick,
+                    fill=white,
+                    rounded corners,
+                ] (0,0)%
+                [sharp corners]-- ++(0, \recipewidth)%
+                -- ++(\recipewidth/2, -\recipewidth)%
+                -- ++(\recipewidth/2, \recipewidth)%
+                -- ++(0, -\recipewidth)%
+                -- ++(-\recipewidth, 0)%
+                --cycle;
+            }
+        };
+    }
+}

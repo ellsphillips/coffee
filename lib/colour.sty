@@ -1,0 +1,31 @@
+\RequirePackage{
+	xcolor,
+	color,
+}
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+	family=coffee,
+	prefix=coffee@%
+}
+
+\DeclareStringOption[clr-coffee-]{prefix}
+\DeclareDefaultOption{%
+	\OptionNotUsed
+	\PackageError{coffee-theme}{Unknown `\CurrentOption' option}
+}
+\ProcessKeyvalOptions*
+
+\newcommand\coffee@definecolor[2]{
+	\expandafter\definecolor\expandafter{\coffee@prefix #1}{HTML}{#2}
+}
+
+\coffee@definecolor{espresso}     {3B1F16}
+\coffee@definecolor{crema}        {986148}
+\coffee@definecolor{brew}         {4F2C21}
+\coffee@definecolor{steamed-milk} {DFC59E}
+\coffee@definecolor{milk}         {D0021B}
+\coffee@definecolor{cream}        {F7EEDD}
+\coffee@definecolor{foamed-milk}  {D0021B}
+\coffee@definecolor{chocolate}    {1F170F}
+\coffee@definecolor{whiskey}      {B18430}

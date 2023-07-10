@@ -1,0 +1,11 @@
+\newcommand\Title{%
+    \begin{tikzpicture}[remember picture, overlay]%
+        \node[anchor=north] at ([yshift=-1cm]current page.north) {%
+            \parbox{\textwidth}{%
+                \fontsize{32}{0}\selectfont%
+                \bfseries Coffee \\[12pt]
+                \rule{\textwidth}{4pt}%
+            }%
+        };
+    \end{tikzpicture}
+}
